@@ -1,3 +1,5 @@
+import { FaRegLightbulb } from 'react-icons/fa'
+
 import { solution, unicodeSplit } from '../../lib/words'
 import { Cell } from './Cell'
 
@@ -19,6 +21,9 @@ export const CurrentRow = ({ guess, className }: Props) => {
       {emptyCells.map((_, i) => (
         <Cell key={i} />
       ))}
+      <button disabled>
+        <FaRegLightbulb color="yellow" size="2em" />
+      </button>
     </div>
   )
 }

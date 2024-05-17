@@ -209,11 +209,11 @@ svg.cursor-pointer:hover {
 }
 
 .react-datepicker-right {
-  @apply absolute right-0 left-auto top-11 transform-none !important;
+  @apply absolute left-auto right-0 top-11 transform-none !important;
 }
 
 .react-datepicker__portal {
-  @apply absolute top-12 right-0 z-10 w-72 transform-none rounded border-2 border-gray-200 bg-white px-3 py-2 text-sm shadow;
+  @apply absolute right-0 top-12 z-10 w-72 transform-none rounded border-2 border-gray-200 bg-white px-3 py-2 text-sm shadow;
 }
 
 .react-datepicker__month-container {
@@ -290,4 +290,33 @@ svg.cursor-pointer:hover {
 
 .react-datepicker__day--range-end {
   @apply bg-indigo-600 text-white hover:bg-white hover:text-gray-700;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1); /* semi-transparent overlay */
+  z-index: 40; /* Ensure it's above other content but below the button */
+}
+.comic-popup {
+  position: relative;
+  padding: 8px;
+  background-color: rgba(230, 230, 230, 0.658); /* Soft grey background */
+  border-radius: 18px; /* Larger border radius for rounded corners */
+  border: none; /* No border */
+  font-family: Arial, sans-serif; /* Simple sans-serif font */
+  color: #2e2e2e; /* Dark grey text color */
+  padding-left: 12px;
+  padding-right: 12px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 6px 6px rgba(0, 0, 0, 0.1); /* Softer shadow for a matte look */
+  backdrop-filter: blur(5px); /* Apply blur effect to the backdrop */
+  opacity: 1;
+  transition: opacity 0.5s;
 }

@@ -10,6 +10,7 @@ type Props = {
   isRevealing?: boolean
   isCompleted?: boolean
   position?: number
+  onHintClick?: () => void
 }
 
 export const Cell = ({
@@ -18,6 +19,7 @@ export const Cell = ({
   isRevealing,
   isCompleted,
   position = 0,
+  onHintClick,
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted

@@ -10,20 +10,30 @@ import queryString from 'query-string'
 
 import { ENABLE_ARCHIVED_GAMES } from '../constants/settings'
 import { NOT_CONTAINED_MESSAGE, WRONG_SPOT_MESSAGE } from '../constants/strings'
-import { VALID_GUESSES } from '../constants/validGuesses'
-import { WORDS } from '../constants/wordlist'
+import { WORDS_5 } from '../constants/validGuesses_5'
+import { WORDS_6 } from '../constants/validGuesses_6'
+import { WORDS_7 } from '../constants/validGuesses_7'
+import { WORDS_8 } from '../constants/validGuesses_8'
+import { WORDS1 } from '../constants/wordlist1'
 import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
 
 // 1 January 2022 Game Epoch
-export const firstGameDate = new Date(2022, 0)
+export const firstGameDate = new Date(2024, 4)
 export const periodInDays = 1
 
 export const isWordInWordList = (word: string) => {
-  return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
-    VALID_GUESSES.includes(localeAwareLowerCase(word))
-  )
+  const lowerCasedWord = localeAwareLowerCase(word)
+  switch (word.length) {
+    case 5:
+      return WORDS_5.includes(lowerCasedWord)
+    case 6:
+      return WORDS_6.includes(lowerCasedWord)
+    case 7:
+      return WORDS_7.includes(lowerCasedWord)
+    case 8:
+      return WORDS_8.includes(lowerCasedWord)
+  }
 }
 
 export const isWinningWord = (word: string) => {
@@ -118,12 +128,14 @@ export const getIndex = (gameDate: Date) => {
   return index
 }
 
+const eightLetterWords = WORDS1.filter((word) => word.length === 6)
+
 export const getWordOfDay = (index: number) => {
-  if (index < 0) {
-    throw new Error('Invalid index')
+  if (index < 0 || eightLetterWords.length === 0) {
+    throw new Error('Invalid index or no 8-letter words available')
   }
 
-  return localeAwareUpperCase(WORDS[index % WORDS.length])
+  return localeAwareUpperCase(eightLetterWords[index % eightLetterWords.length])
 }
 
 export const getSolution = (gameDate: Date) => {

@@ -31,13 +31,14 @@ export const Grid = ({
           solution={solution}
           guess={guess}
           isRevealing={isRevealing && guesses.length - 1 === i}
+          hintIndex={i}
         />
       ))}
       {guesses.length < MAX_CHALLENGES && (
         <CurrentRow guess={currentGuess} className={currentRowClassName} />
       )}
       {empties.map((_, i) => (
-        <EmptyRow key={i} />
+        <EmptyRow key={i} isLast={i === empties.length - 1} />
       ))}
     </>
   )
